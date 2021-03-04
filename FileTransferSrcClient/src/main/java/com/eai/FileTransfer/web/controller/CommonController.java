@@ -37,6 +37,7 @@ public class CommonController {
     	String reqSndType = request.getParameter("sndType");
     	String reqDstPath = request.getParameter("dstPath");
     	String reqDstFileName = request.getParameter("dstFileName");
+    	String reqTgtSvrName= request.getParameter("tgtSvrName");
     	
     	log.info("Input Data : "  +reqFileName + " : " + reqSecretKey + " : " +reqSndType+  " : " +reqDstPath + "  : " +reqDstFileName+ " : " +dstfile.getPath());
     	
@@ -59,6 +60,8 @@ public class CommonController {
 	    	msg.setSndType(reqSndType);
 	    	msg.setTransactionKey(String.valueOf(System.currentTimeMillis()));
 	    	msg.setMessageType("1");
+	    	msg.setTgtSverName(reqTgtSvrName);
+	    	msg.setSrcSverName(Utils.getServerName());
 	    	
 	    	log.info(msg.toString());	
 	        sender.sndMsg(msg);

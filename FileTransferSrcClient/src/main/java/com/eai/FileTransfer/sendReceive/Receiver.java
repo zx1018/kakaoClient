@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 import com.eai.FileTransfer.service.AsyncTaskService;
+import com.eai.FileTransfer.util.Utils;
 
 import ch.qos.logback.classic.Logger;
 
@@ -25,7 +26,7 @@ public class Receiver {
     private AsyncTaskService service;
 	
 	// 파일 전송 시작 큐 
-	@JmsListener(destination = "src_rcv-queue", containerFactory="jsaFactory")
+	@JmsListener(destination = "dst-queue_server1", containerFactory="jsaFactory")
 	public void receiveMessage(Message msg){
 		log.info("Received : " +msg.getMessageType());
 		log.info(msg.toString());
@@ -43,7 +44,13 @@ public class Receiver {
 			
 		}
 		else {
-		
+			// 모든 메세지는 받아서 서버 타겟명을 변경해야 한다. 
+//			String temp = "" ;
+//			temp = msg.getSrcSverName() ;
+//			temp = msg.getTgtSverName();
+			msg.setTgtSverName(msg.getSrcSverName());
+			msg.setSrcSverName(Utils.getServerName());
+			
 			switch(status) {
 				// 파일 전송 요청을 받은 단계 ( 서버를 기동 할 수 있으면 기동하고 그 응답 값을 회신한다. 
 				case 1 : 

@@ -33,5 +33,9 @@ public class Utils {
 			return "x";
 		}
 	}
+	
+	public static String getServerName() {
+		return "server1";
+	}
 
 }

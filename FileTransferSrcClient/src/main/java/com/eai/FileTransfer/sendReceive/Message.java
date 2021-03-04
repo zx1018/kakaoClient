@@ -15,13 +15,31 @@ public class Message {
 	private String sndRst;         // 파일 송신 결과 
 	private String fileHash;       // 파일의 해시 값 
 	private String messageType;    // 전문구분 1 전송 요청, 2 전송 허가 3 
-	
+	private String tgtSverName;    // 파일을 받을 서버명
+	private String srcSverName;    // 파일을 보내는 서버명 
+
 	
 	public Message() {
 		
 	}
-
+	
 	// getter, setter
+	public String getTgtSverName() {
+		return tgtSverName;
+	}
+
+	public String getSrcSverName() {
+		return srcSverName;
+	}
+
+	public void setSrcSverName(String srcSverName) {
+		this.srcSverName = srcSverName;
+	}
+
+	public void setTgtSverName(String tgtSverName) {
+		this.tgtSverName = tgtSverName;
+	}
+
 	public String getMessageType() {
 		return messageType;
 	}
@@ -166,6 +184,7 @@ public class Message {
 		sb.append(" transactionKey:" +this.transactionKey);
 		sb.append(" messageType:" +this.messageType);
 		sb.append(" dstFileName:" +this.dstFileName);
+		sb.append(" tgtSverName:" +this.tgtSverName);
 		
 		return sb.toString();
 	}

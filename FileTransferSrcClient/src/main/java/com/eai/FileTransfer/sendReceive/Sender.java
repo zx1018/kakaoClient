@@ -11,7 +11,7 @@ public class Sender {
 	private JmsTemplate jmsTemplate;
 	    
     public void sndMsg(Message msg) {
-        jmsTemplate.convertAndSend("src_snd-queue", msg);
+        jmsTemplate.convertAndSend("snd-queue-server1", msg);
     }
     
 }

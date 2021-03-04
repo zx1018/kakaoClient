@@ -57,7 +57,7 @@ public class AsyncTaskService {
 		FileTransferFileCheck check = new FileTransferFileCheck();
 		ret = check.check(msg);
 		if(ret == 0) {
-			msg.setMessageType("4");                    // messageType을 3로 변경 ( 파일 전송 완료 상태 )
+			msg.setMessageType("4");                    // messageType을 4로 변경 ( 파일 확인 완료 상태 )
 			sender.sndMsg(msg);
 		}
 		else {
