@@ -1,20 +1,18 @@
 package com.eai.FileTransfer.util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.LoggerFactory;
 import com.eai.FileTransfer.sendReceive.Message;
 import ch.qos.logback.classic.Logger;
 
+
+/**********************************
+ * 
+ * @author IWJ
+ * 파일 정상 수신을 확인 하기 위한 클래스 ( Async 서비스로 실행이 된다. )
+ *
+ ***********************************/
 public class FileTransferFileCheck {
 
 	private static Logger log = (Logger) LoggerFactory.getLogger(FileTransferFileCheck.class);
@@ -27,7 +25,7 @@ public class FileTransferFileCheck {
         File src = new File(msg.getDstPath()+"\\"+msg.getDstFileName()+".enc");
         File dest = new File(msg.getDstPath()+"\\"+msg.getDstFileName());
         
-        // 팡리 복호화 
+        // 파일 복호화 
         FileCoder coder = new FileCoder(msg.getSecretKey());
         try {
 			coder.decrypt(src, dest);

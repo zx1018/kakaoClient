@@ -1,27 +1,28 @@
 package com.eai.FileTransfer.util;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.eai.FileTransfer.sendReceive.Message;
-import com.eai.FileTransfer.sendReceive.Sender;
 import ch.qos.logback.classic.Logger;
  
+
+/**********************************
+ * 
+ * @author IWJ
+ * 파일 수신을 위한 클래스 ( Async 서비스로 실행이 된다. )
+ *
+ ***********************************/
 @Component
 public class FileTransferReceiver {
 	
 	private static Logger log = (Logger) LoggerFactory.getLogger(FileTransferReceiver.class);
 	
     public static final int DEFAULT_BUFFER_SIZE = 10000;
-    
-	@Autowired(required=true)
-    private Sender sender;
 
   
 	/**

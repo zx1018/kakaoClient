@@ -1,12 +1,11 @@
 package com.eai.FileTransfer.util;
 
-/**
- * 이 클래스는 Byte 관련 함수를 제공합니다. 
+/**********************************
  * 
  * @author <a href="mailto:kangwoo@jarusoft.com">kangwoo</a>
- * @version 1.0
- * @since 1.0
- */
+ * 파일 암복화를 위하여 인터넷에서 다운 받은 소스 
+ *
+ ***********************************/
 public class ByteUtils {
 	
 	public static Byte DEFAULT_BYTE = new Byte((byte) 0);

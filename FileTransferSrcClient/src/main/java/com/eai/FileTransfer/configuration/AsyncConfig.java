@@ -4,6 +4,7 @@ import java.util.concurrent.Executor;
 
 import javax.annotation.Resource;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,14 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import ch.qos.logback.classic.Logger;
+
+/**********************************
+ * 
+ * @author iwj
+ * AsyncService에 대한 설정을 진행하는 클래스 
+ *
+ ***********************************/
 /*
  * @Configuration : bean 객체 등록
  * @EnableAsync : 비동기 프로세서 사용선
@@ -19,10 +28,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @EnableAsync
 public class AsyncConfig implements AsyncConfigurer{
 	
+	private static Logger log = (Logger) LoggerFactory.getLogger(AsyncConfig.class);
+	
 	//기본 Thread 수
 	private static int TASK_CORE_POOL_SIZE = 1;
 	//최대 Thread 수
-	private static int TASK_MAX_POOL_SIZE = 2;
+	private static int TASK_MAX_POOL_SIZE = 5;
 	//QUEUE 수
 	private static int TASK_QUEUE_CAPACITY = 0;
 	//Thread Bean Name
@@ -58,7 +69,7 @@ public class AsyncConfig implements AsyncConfigurer{
 	public boolean checkSampleTaskExecute() {
 		boolean result = true;
 		
-		System.out.println("활성 Task 수 :::: " + executor1.getActiveCount());
+		log.info("활성 Task 수 :::: " + executor1.getActiveCount());
 		
 		if(executor1.getActiveCount() >= (TASK_MAX_POOL_SIZE + TASK_QUEUE_CAPACITY)) {
 			result = false;

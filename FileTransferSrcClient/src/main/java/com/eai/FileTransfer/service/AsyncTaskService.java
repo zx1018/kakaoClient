@@ -15,6 +15,14 @@ import com.eai.FileTransfer.util.FileTransferSender;
 
 import ch.qos.logback.classic.Logger;
 
+
+
+/**********************************
+ * 
+ * @author iwj
+ * Aync 처리를 위한 서비스 
+ *
+ ***********************************/
 @Component
 @Service("asyncTaskService")
 public class AsyncTaskService {
