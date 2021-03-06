@@ -1,5 +1,12 @@
 package com.eai.FileTransfer.sendReceive;
 
+
+/**********************************
+ * 
+ * @author iwj
+ * Queue를 통해 주고 받는 메세지 클래스 
+ *
+ ***********************************/
 public class Message {
 
 	private String fileName;       // 파일명
@@ -176,7 +183,7 @@ public class Message {
 		sb.append(" fileName:" +this.fileName);
 		sb.append(" fileSize:" +this.fileSize);
 		sb.append(" secretKey:" +this.secretKey);
-		sb.append(" sndPort:" +this.rcvPort);
+		sb.append(" rcvPort:" +this.rcvPort);
 		sb.append(" rcvip:" +this.rcvip);
 		sb.append(" sndRst:" +this.sndRst);
 		sb.append(" sndType:" +this.sndType);

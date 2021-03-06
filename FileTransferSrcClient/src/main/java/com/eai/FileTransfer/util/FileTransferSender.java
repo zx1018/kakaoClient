@@ -2,12 +2,9 @@ package com.eai.FileTransfer.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
-
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
@@ -15,12 +12,22 @@ import org.slf4j.LoggerFactory;
 import com.eai.FileTransfer.sendReceive.Message;
 import ch.qos.logback.classic.Logger;
 
+
+
+/**********************************
+ * 
+ * @author IWJ
+ * 파일 송신을 위한 클래스 ( Async 서비스로 실행이 된다. )
+ *
+ ***********************************/
 public class FileTransferSender {
 
 	private static Logger log = (Logger) LoggerFactory.getLogger(FileTransferSender.class);
 
 	public static final int DEFAULT_BUFFER_SIZE = 10000;
 
+	
+	/* 파일 전송 시작 함수 */
 	public int start(Message msg) {
 		
 		int result = 0;
@@ -107,8 +114,8 @@ public class FileTransferSender {
 			FileInputStream fis = new FileInputStream(fileEnc);
 			Socket socket = new Socket(msg.getRcvip(), Integer.parseInt(msg.getRcvPort()));
 			if (!socket.isConnected()) {
-				System.out.println("Socket Connect Error.");
-				System.exit(0);
+				log.info("Socket Connect Error.");
+				return -1;
 			}
 
 			startTime = System.currentTimeMillis();

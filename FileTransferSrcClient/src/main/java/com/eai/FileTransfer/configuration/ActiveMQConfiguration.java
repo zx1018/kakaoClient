@@ -13,7 +13,12 @@ import org.springframework.jms.support.converter.MappingJackson2MessageConverter
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
-
+/**********************************
+ * 
+ * @author iwj
+ * ActiveMQ에 대한 설정을 하는 클래스 
+ *
+ ***********************************/
 @Configuration
 public class ActiveMQConfiguration {
 

@@ -13,7 +13,12 @@ import com.eai.FileTransfer.util.Utils;
 import ch.qos.logback.classic.Logger;
 
 
-
+/**********************************
+ * 
+ * @author iwj
+ * Queue Receiver 클래스  
+ *
+ ***********************************/
 @Component
 public class Receiver {
 	
@@ -33,7 +38,9 @@ public class Receiver {
 		
 		processMessageType(msg);
 	}
-
+	
+	
+	// 수신한 MessageType에 맞게 처리하는 함수  
 	private void processMessageType(Message msg) {
 		// 처리 프로세스 
 		int status = Integer.parseInt(msg.getMessageType());
